@@ -38,7 +38,10 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <h1>SQ System ca</h1>
+                    <img src="{{asset('/imagenes/LOGOSQintro.png')}}" alt="" style="width:200px;">                    
+                </div>                 
+                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
+                    <h1>SQ System C.A</h1>
                 </div>                
             </div>
         </div>
