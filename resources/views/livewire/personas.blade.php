@@ -50,10 +50,10 @@
                             <td class="border px-4 py-2">{{$persona->nac}}-{{$persona->cedula}}</td>
                             <td class="border px-4 py-2">{{$persona->nrotelefono}}</td>
                             <td class="border px-4 py-2">
-                                <button wire:click="edit({{$persona->id }})" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded my-3">
+                                <button wire:click="editar({{$persona->id }})" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded my-3">
                                     Ver
                                 </button>
-                                <button wire:click="edit({{$persona->id }})" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded my-3">
+                                <button wire:click="editar({{$persona->id }})" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded my-3">
                                     Editar
                                 </button>
                                 <button wire:click="delete({{$persona->id }})" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded my-3">

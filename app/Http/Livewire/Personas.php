@@ -44,4 +44,23 @@ class Personas extends Component
         $this->$fvuelo = '';
         $this->$numerodevuelo = '';
     }
+
+    public function editar($id){
+        $persona = Persona::findOrFail($id);
+        $this->id = $id;
+        $this->nombre = $persona->nombre;
+        $this->apellido = $persona->apellido;
+        $this->nac = $persona->nac;
+        $this->cedula = $persona->cedula;
+        $this->pasaporte = $persona->pasaporte;
+        $this->fnacimiento = $persona->fnacimiento;
+        $this->nrotelefono = $persona->nrotelefono;
+        $this->email = $persona->email;
+        $this->direccion = $persona->direccion;
+        $this->destinovuela = $persona->destinovuela;
+        $this->fvuelo = $persona->fvuelo;
+        $this->numerodevuelo = $persona->numerodevuelo;
+
+        $this->abrirModal();
+    }
 }

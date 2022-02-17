@@ -1,5 +1,5 @@
-<div class="bg-slate-800 bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0">
-  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+<div class="bg-slate-800 bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0 ">
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 max-w-7xl mx-auto sm:px-6 lg:px-8">
 
     <div class="fixed inset-0 transition-opacity">
       <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
@@ -9,30 +9,35 @@
 
     <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>  
 
-    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-7xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
 
-      <form>
-        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-        <div class="">
-          <div class="mb-4">
-            <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">Title:</label>
-            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput1" placeholder="Enter Title" wire:model="title">
+      <form class="w-full max-w-lg">
+        <div class="bg-white px-8 pt-5 pb-4 sm:p-6 sm:pb-4 sm:flex sm:flex-row-reverse">
 
-            @error('title') 
-              <span class="text-red-500">{{ $message }}</span>
-            @enderror
+          <div class="flex flex-wrap -mx-3 mb-6">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <div>
+                  <label for="" class="block uppercase tracking-wide text-gray-700 text-xs font-bold">Nombre</label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded" id="nombre" wire:model="nombre" type="text">
+                </div>
+              </div>
+              <div>
+                <div>
+                  <label for="" class="block uppercase tracking-wide text-gray-700 text-xs font-bold">Apellido</label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded" id="apellido" wire:model="apellido" type="text">
+                </div>
+              </div>
+              <div>
+                <div>
+                  <label for="" class="block uppercase tracking-wide text-gray-700 text-xs font-bold">Cedula</label>
+                  <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded" id="cedula" wire:model="cedula" type="text">
+                </div>
+              </div>
+            </div>            
           </div>
-
-            <div class="mb-4">
-              <label for="exampleFormControlInput2" class="block text-gray-700 text-sm font-bold mb-2">Body:</label>
-              <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput2" wire:model="body" placeholder="Enter Body"></textarea>
-
-              @error('body') 
-                <span class="text-red-500">{{ $message }}</span>
-              @enderror
-            </div>
-
-        </div>
+          
 
         </div>
 
