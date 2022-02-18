@@ -1,4 +1,4 @@
-<p align="center"><a href="http://sqsystemca.com" target="_blank"><img src="https://drive.google.com/uc?export=download&id=1U2M0N-idjNlB8zD8E1Ne0q3eIQ_T4L1Z" width="400"></a></p>
+<p align="center"><a href="http://sqsystemca.com/" target="_blank"><img src="https://drive.google.com/uc?export=download&id=1U2M0N-idjNlB8zD8E1Ne0q3eIQ_T4L1Z" width="400"></a></p>
 
 # SQ System c.a
 
