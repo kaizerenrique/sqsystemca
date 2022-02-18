@@ -166,4 +166,82 @@
                 </x-jet-danger-button>
             </x-slot>
         </x-jet-dialog-modal>
+
+        <!-- Agregar Persona Confirmation Modal -->
+    <x-jet-dialog-modal wire:model="confirmingPersonaVer">
+            <x-slot name="title">
+                {{ __('Ver') }}
+            </x-slot>
+
+            <x-slot name="content">                
+                <div class="grid grid-cols-4 gap-4 text-sm text-gray-600">
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="name" value="{{ __('Nombre') }}" />
+                        <x-jet-input id="persona.nombre" type="text" class="mt-1 block w-full" wire:model.defer="persona.nombre"/>
+                        <x-jet-input-error for="persona.nombre" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="apellido" value="{{ __('Apellido') }}" />
+                        <x-jet-input id="persona.apellido" type="text" class="mt-1 block w-full" wire:model.defer="persona.apellido"/>
+                        <x-jet-input-error for="persona.apellido" class="mt-2" />
+                    </div>                    
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="cedula" value="{{ __('Cedula') }}" />
+                        <x-jet-input id="persona.cedula" type="text" class="mt-1 block w-full" wire:model.defer="persona.cedula"/>
+                        <x-jet-input-error for="persona.cedula" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="pasaporte" value="{{ __('Pasaporte') }}" />
+                        <x-jet-input id="persona.pasaporte" type="text" class="mt-1 block w-full" wire:model.defer="persona.pasaporte"/>
+                        <x-jet-input-error for="persona.pasaporte" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="fnacimiento" value="{{ __('Fecha de Nacimiento') }}" />
+                        <x-jet-input id="persona.fnacimiento" type="date" class="mt-1 block w-full" wire:model.defer="persona.fnacimiento" />
+                        <x-jet-input-error for="persona.fnacimiento" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="ntelefono" value="{{ __('Numero de Teléfono ') }}" />
+                        <x-jet-input id="persona.nrotelefono" type="text" class="mt-1 block w-full" wire:model.defer="persona.nrotelefono"/>
+                        <x-jet-input-error for="persona.nrotelefono" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="email" value="{{ __('Correo electrónico') }}" />
+                        <x-jet-input id="persona.email" type="email" class="mt-1 block w-full" wire:model.defer="persona.email" />
+                        <x-jet-input-error for="persona.email" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="codigo" value="{{ __('Código') }}" />
+                        <x-jet-input id="persona.idusuario" type="text" class="mt-1 block w-full" wire:model.defer="persona.idusuario"/>
+                        <x-jet-input-error for="persona.idusuario" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-4">
+                        <x-jet-label for="direccion" value="{{ __('Dirección') }}" />
+                        <x-jet-input id="persona.direccion" type="text" class="mt-1 block w-full" wire:model.defer="persona.direccion"/>
+                        <x-jet-input-error for="persona.direccion" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-4">
+                        <x-jet-label for="direccion" value="{{ __('Destino') }}" />
+                        <x-jet-input id="persona.destinovuela" type="text" class="mt-1 block w-full" wire:model.defer="persona.destinovuela"/>
+                        <x-jet-input-error for="persona.destinovuela" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="fvuelo" value="{{ __('Fecha del Viaje') }}" />
+                        <x-jet-input id="persona.fvuelo" type="date" class="mt-1 block w-full" wire:model.defer="persona.fvuelo" />
+                        <x-jet-input-error for="persona.fvuelo" class="mt-2" />
+                    </div>
+                    <div class="col-span-4 sm:col-span-2">
+                        <x-jet-label for="numerodevuelo" value="{{ __('Numero del Vuelo') }}" />
+                        <x-jet-input id="persona.numerodevuelo" type="text" class="mt-1 block w-full" wire:model.defer="persona.numerodevuelo"/>
+                        <x-jet-input-error for="persona.numerodevuelo" class="mt-2" />
+                    </div>
+                </div>
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="$toggle('confirmingPersonaVer', false)" wire:loading.attr="disabled">
+                    {{ __('Cerrar') }}
+                </x-jet-secondary-button>
+            </x-slot>
+        </x-jet-dialog-modal>
 </div>

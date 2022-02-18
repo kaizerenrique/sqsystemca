@@ -17,6 +17,7 @@ class Personas extends Component
 
     public $confirmingPersonaDeletion = false; 
     public $confirmingPersonaAdd = false; 
+    public $confirmingPersonaVer = false;
 
 
 
@@ -145,7 +146,7 @@ class Personas extends Component
     public function confirmPersonaVer(Persona $persona)
     {
         $this->persona = $persona;
-        $this->confirmingPersonaAdd = true;
+        $this->confirmingPersonaVer = true;
     }
     
 
