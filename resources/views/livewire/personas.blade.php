@@ -36,10 +36,7 @@
                     </th>                    
                     <th class="px-4 py-2">
                         <div class="flex items-center">Nro Teléfono</div>
-                    </th>
-                    <th class="px-4 py-2">
-                        <div class="flex items-center">Correo</div>
-                    </th>
+                    </th>                    
                     <th class="px-4 py-2">
                         <div class="flex items-center">Acción</div>
                     </th>
@@ -53,9 +50,14 @@
                         <td class="rounded border px-4 py-2">{{$persona->nombre}}</td>
                         <td class="rounded border px-4 py-2">{{$persona->apellido}}</td>
                         <td class="rounded border px-4 py-2">{{$persona->cedula}}</td>
-                        <td class="rounded border px-4 py-2">{{$persona->nrotelefono}}</td>
-                        <td class="rounded border px-4 py-2">{{$persona->email}}</td>
+                        <td class="rounded border px-4 py-2">{{$persona->nrotelefono}}</td>                        
                         <td class="rounded border px-4 py-2">
+                            <x-jet-button class="bg-green-500 hover:bg-green-700" wire:click="confirmPersonaVer({{$persona->id}})" >
+                                {{ __('Ver') }}
+                            </x-jet-button>
+                            <x-jet-button class="bg-indigo-500 hover:bg-indigo-700" wire:click="confirmPersonaEditar({{$persona->id}})" >
+                                {{ __('Editar') }}
+                            </x-jet-button>
                             <x-jet-danger-button wire:click="confirmPersonaDeletion ({{$persona->id}})" wire:loading.attr="disabled">
                                 {{ __('Eliminar') }}
                             </x-jet-danger-button>
@@ -92,7 +94,7 @@
         <!-- Agregar Persona Confirmation Modal -->
     <x-jet-dialog-modal wire:model="confirmingPersonaAdd">
             <x-slot name="title">
-                {{ __('Registrar') }}
+                {{ isset( $this->persona->id) ? 'Editar' : 'Registrar' }}
             </x-slot>
 
             <x-slot name="content">                
@@ -159,7 +161,6 @@
                 <x-jet-secondary-button wire:click="$toggle('confirmingPersonaAdd', false)" wire:loading.attr="disabled">
                     {{ __('Cancelar') }}
                 </x-jet-secondary-button>
-
                 <x-jet-danger-button class="ml-3" wire:click="savePersona()" wire:loading.attr="disabled">
                     {{ __('Guardar') }}
                 </x-jet-danger-button>

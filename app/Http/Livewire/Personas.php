@@ -106,29 +106,47 @@ class Personas extends Component
     public function savePersona()
     {
         //$this->validate();
+        if (isset($this->persona->id)) {
+            $this->persona->save();
+        } else {
+            do {
+                $code = Str::random(7);    
+            } while (Persona::where('idusuario', $code)->exists());
+            
+            auth()->user()->personas()->create([ 
+                'idusuario' => $code,           
+                'nombre' => $this->persona['nombre'],
+                'apellido' => $this->persona['apellido'],
+                'cedula' => $this->persona['cedula'] ?? null,
+                'pasaporte' => $this->persona['pasaporte'] ?? null,
+                'fnacimiento' => $this->persona['fnacimiento'],
+                'nrotelefono' => $this->persona['nrotelefono'] ?? null,
+                'email' => $this->persona['email'] ?? null,
+                'direccion' => $this->persona['direccion'],
+                'destinovuela' => $this->persona['destinovuela'],
+                'fvuelo' => $this->persona['fvuelo'],
+                'numerodevuelo' => $this->persona['numerodevuelo']
+            ]);
+        }
         
-        do {
-            $code = Str::random(7);    
-        } while (Persona::where('idusuario', $code)->exists());
-        
-        auth()->user()->personas()->create([ 
-            'idusuario' => $code,           
-            'nombre' => $this->persona['nombre'],
-            'apellido' => $this->persona['apellido'],
-            'cedula' => $this->persona['cedula'] ?? null,
-            'pasaporte' => $this->persona['pasaporte'] ?? null,
-            'fnacimiento' => $this->persona['fnacimiento'],
-            'nrotelefono' => $this->persona['nrotelefono'] ?? null,
-            'email' => $this->persona['email'] ?? null,
-            'direccion' => $this->persona['direccion'],
-            'destinovuela' => $this->persona['destinovuela'],
-            'fvuelo' => $this->persona['fvuelo'],
-            'numerodevuelo' => $this->persona['numerodevuelo']
-        ]);
-
         $this->confirmingPersonaAdd = false;
     }
 
     //------------------------------------------------
+    //Editar Registro
+
+    public function confirmPersonaEditar(Persona $persona)
+    {
+        $this->persona = $persona;
+        $this->confirmingPersonaAdd = true;
+    }
+
+
+    public function confirmPersonaVer(Persona $persona)
+    {
+        $this->persona = $persona;
+        $this->confirmingPersonaAdd = true;
+    }
+    
 
 }
