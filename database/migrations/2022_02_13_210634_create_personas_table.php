@@ -15,19 +15,20 @@ return new class extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
-            $table->string('idusuario',50);//codigo unico de identificacion asignado por el sistema 
+            $table->integer('user_id')->index();
+            $table->string('idusuario',250);//codigo unico de identificacion asignado por el sistema 
             $table->string('nombre',120);
             $table->string('apellido',120);
-            $table->string('nac',1); //nacionalidad
-            $table->string('cedula',12);
-            $table->string('pasaporte')->nullable();
-            $table->dateTime('fnacimiento')->nullable();//fecha de nacimiento
-            $table->string('nrotelefono',14);
-            $table->string('email')->unique();
-            $table->string('direccion',250);
-            $table->string('destinovuela',250);
-            $table->dateTime('fvuelo')->nullable();//fecha de vuelo
-            $table->string('numerodevuelo');
+            $table->string('nac',1)->nullable(); //nacionalidad
+            $table->string('cedula',12)->nullable();
+            $table->string('pasaporte',120)->nullable();
+            $table->date('fnacimiento')->nullable();//fecha de nacimiento
+            $table->string('nrotelefono',14)->nullable();
+            $table->string('email')->nullable();
+            $table->string('direccion',250)->nullable();
+            $table->string('destinovuela',250)->nullable();
+            $table->date('fvuelo')->nullable();//fecha de vuelo
+            $table->string('numerodevuelo')->nullable();
             $table->timestamps();
         });
     }

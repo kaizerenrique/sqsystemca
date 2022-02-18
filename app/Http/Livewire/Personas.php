@@ -4,63 +4,131 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Persona;
+use Livewire\WithPagination;
+use Illuminate\Support\Str;
 
 class Personas extends Component
 {
-    //Definicion de Variable
-    public $personas, $idusuario, $nombre, $apellido, $nac, $cedula, $pasaporte, $fnacimiento, $nrotelefono, $email, $direccion, $destinovuela, $fvuelo, $numerodevuelo;
-    public $modal = false;
+    use WithPagination;
+
+    //variables
+    public $buscar;
+    public $persona;
+
+    public $confirmingPersonaDeletion = false; 
+    public $confirmingPersonaAdd = false; 
+
+
+
+    protected $queryString = [
+        'buscar' => ['except' => '']
+    ];
+
+    protected $rules = [
+        'persona.nombre' => 'require|string|min:4',
+        'persona.apellido' => 'require|string|min:4',
+        'persona.cedula' => 'string|min:6',
+        'persona.pasaporte' => 'string|min:4',
+        'persona.fnacimiento' => 'date',
+        'persona.nrotelefono' => 'string|min:12|max:15',
+        'persona.email' => 'email',
+        'persona.direccion' => 'string|min:8|max:200',
+        'persona.destinovuela' => 'string|min:4|max:80',
+        'persona.fvuelo' => 'date',
+        'persona.numerodevuelo' => 'string|min:4|max:30',
+    ];
 
     public function render()
     {
-        $this->personas = Persona::all();
-        return view('livewire.personas');
+        //$personas = Persona::where('user_id', auth()->user()->id)
+        //            ->when($this->buscar, function($query){
+        //                return $query->where(function ($query){
+        //                    $query->where('nombre', 'like', '%'.$this->buscar . '%')
+        //                        ->orWhere('apellido', 'like', '%'.$this->buscar . '%')
+        //                        ->orWhere('cedula', 'like', '%'.$this->buscar . '%')
+        //                        ->orWhere('pasaporte', 'like', '%'.$this->buscar . '%')
+        //                        ->orWhere('idusuario', 'like', '%'.$this->buscar . '%')
+        //                        ->orWhere('nrotelefono', 'like', '%'.$this->buscar . '%')
+        //                        ->orWhere('email', 'like', '%'.$this->buscar . '%')
+        //                        ->orWhere('direccion', 'like', '%'.$this->buscar . '%');
+        //                });
+        //            });
+        //$personas = $personas->paginate(10);
+
+        $personas = Persona::query()
+            ->when($this->buscar, function($query){
+                        return $query->where(function ($query){
+                            $query->where('nombre', 'like', '%'.$this->buscar . '%')
+                                ->orWhere('apellido', 'like', '%'.$this->buscar . '%')
+                                ->orWhere('cedula', 'like', '%'.$this->buscar . '%')
+                                ->orWhere('pasaporte', 'like', '%'.$this->buscar . '%')
+                                ->orWhere('idusuario', 'like', '%'.$this->buscar . '%')
+                                ->orWhere('nrotelefono', 'like', '%'.$this->buscar . '%')
+                                ->orWhere('email', 'like', '%'.$this->buscar . '%')
+                                ->orWhere('direccion', 'like', '%'.$this->buscar . '%');
+                        });
+                    });
+        $personas = $personas->paginate(5);
+
+        return view('livewire.personas',[
+            'personas' => $personas,
+        ]);
     }
 
-    public function crear(){
-        //$this->limpiarCampos();
-        $this->abrirModal();
+    public function updatingBuscar()
+    {
+        $this->resetPage();
     }
 
-    public function abrirModal(){
-        $this->modal = true;
+    //------------------------------------------------
+    // Modal de confirmacion para eliminar usuario
+    public function confirmPersonaDeletion ($id)
+    {
+        $this->confirmingPersonaDeletion = $id;
     }
 
-    public function cerrarModal(){
-        $this->modal = false;
+    // Eliminar Usuario
+    public function deletePersona (Persona $persona)
+    {
+        $persona->delete();
+        $this->confirmingPersonaDeletion = false;
+    }
+    //------------------------------------------------
+    
+    //------------------------------------------------
+    // Modal para agregar usuario
+    public function confirmPersonaAdd ()
+    {   
+        $this->reset(['persona']);
+        $this->confirmingPersonaAdd = true;
     }
 
-    public function limpiarCampos(){
-        $this->$nombre = '';
-        $this->$apellido = '';
-        $this->$nac = '';
-        $this->$cedula = '';
-        $this->$pasaporte = '';
-        $this->$fnacimiento = '';
-        $this->$nrotelefono = '';
-        $this->$email = '';
-        $this->$direccion = '';
-        $this->$destinovuela = '';
-        $this->$fvuelo = '';
-        $this->$numerodevuelo = '';
+    public function savePersona()
+    {
+        //$this->validate();
+        
+        do {
+            $code = Str::random(7);    
+        } while (Persona::where('idusuario', $code)->exists());
+        
+        auth()->user()->personas()->create([ 
+            'idusuario' => $code,           
+            'nombre' => $this->persona['nombre'],
+            'apellido' => $this->persona['apellido'],
+            'cedula' => $this->persona['cedula'] ?? null,
+            'pasaporte' => $this->persona['pasaporte'] ?? null,
+            'fnacimiento' => $this->persona['fnacimiento'],
+            'nrotelefono' => $this->persona['nrotelefono'] ?? null,
+            'email' => $this->persona['email'] ?? null,
+            'direccion' => $this->persona['direccion'],
+            'destinovuela' => $this->persona['destinovuela'],
+            'fvuelo' => $this->persona['fvuelo'],
+            'numerodevuelo' => $this->persona['numerodevuelo']
+        ]);
+
+        $this->confirmingPersonaAdd = false;
     }
 
-    public function editar($id){
-        $persona = Persona::findOrFail($id);
-        $this->id = $id;
-        $this->nombre = $persona->nombre;
-        $this->apellido = $persona->apellido;
-        $this->nac = $persona->nac;
-        $this->cedula = $persona->cedula;
-        $this->pasaporte = $persona->pasaporte;
-        $this->fnacimiento = $persona->fnacimiento;
-        $this->nrotelefono = $persona->nrotelefono;
-        $this->email = $persona->email;
-        $this->direccion = $persona->direccion;
-        $this->destinovuela = $persona->destinovuela;
-        $this->fvuelo = $persona->fvuelo;
-        $this->numerodevuelo = $persona->numerodevuelo;
+    //------------------------------------------------
 
-        $this->abrirModal();
-    }
 }

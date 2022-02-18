@@ -18,16 +18,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//    return view('dashboard');
-//})->name('dashboard');;
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/personas', function () {
+    return view('personas');
+})->name('personas');
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+//Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     
-    Route::get('/personas',Personas::class)->name('personas'); //listado de personas
+//    Route::get('/personas',Personas::class)->name('personas'); //listado de personas
     
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+//    Route::get('/dashboard', function () {
+//        return view('dashboard');
+//    })->name('dashboard');
 
-});
+//});
