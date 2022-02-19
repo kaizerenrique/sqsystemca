@@ -210,11 +210,6 @@
                         <x-jet-input id="persona.email" type="email" class="mt-1 block w-full" wire:model.defer="persona.email"  disabled/>
                         <x-jet-input-error for="persona.email" class="mt-2" />
                     </div>
-                    <div class="col-span-4 sm:col-span-2">
-                        <x-jet-label for="codigo" value="{{ __('Código') }}" />
-                        <x-jet-input id="persona.idusuario" type="text" class="mt-1 block w-full" wire:model.defer="persona.idusuario" disabled/>
-                        <x-jet-input-error for="persona.idusuario" class="mt-2" />
-                    </div>
                     <div class="col-span-4 sm:col-span-4">
                         <x-jet-label for="direccion" value="{{ __('Dirección') }}" />
                         <x-jet-input id="persona.direccion" type="text" class="mt-1 block w-full" wire:model.defer="persona.direccion" disabled/>
