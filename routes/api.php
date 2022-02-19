@@ -19,4 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Ruta de Informacion del usuario
 Route::post('/infouser',[ApiController::class,'infouser'])->middleware('auth:sanctum');
+
+// Ruta de informacion de personas lista
+Route::get('/listadopersonas',[ApiController::class,'listadoPersonas'])->middleware('auth:sanctum');
