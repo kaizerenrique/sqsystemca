@@ -69,7 +69,7 @@ class Personas extends Component
                                 ->orWhere('direccion', 'like', '%'.$this->buscar . '%');
                         });
                     });
-        $personas = $personas->paginate(10);
+        $personas = $personas->paginate(9);
 
         return view('livewire.personas',[
             'personas' => $personas,
