@@ -41,23 +41,8 @@ class Personas extends Component
 
     public function render()
     {
-        //$personas = Persona::where('user_id', auth()->user()->id)
-        //            ->when($this->buscar, function($query){
-        //                return $query->where(function ($query){
-        //                    $query->where('nombre', 'like', '%'.$this->buscar . '%')
-        //                        ->orWhere('apellido', 'like', '%'.$this->buscar . '%')
-        //                        ->orWhere('cedula', 'like', '%'.$this->buscar . '%')
-        //                        ->orWhere('pasaporte', 'like', '%'.$this->buscar . '%')
-        //                        ->orWhere('idusuario', 'like', '%'.$this->buscar . '%')
-        //                        ->orWhere('nrotelefono', 'like', '%'.$this->buscar . '%')
-        //                        ->orWhere('email', 'like', '%'.$this->buscar . '%')
-        //                        ->orWhere('direccion', 'like', '%'.$this->buscar . '%');
-        //                });
-        //            });
-        //$personas = $personas->paginate(10);
-
-        $personas = Persona::query()
-            ->when($this->buscar, function($query){
+        $personas = Persona::where('user_id', auth()->user()->id)
+                    ->when($this->buscar, function($query){
                         return $query->where(function ($query){
                             $query->where('nombre', 'like', '%'.$this->buscar . '%')
                                 ->orWhere('apellido', 'like', '%'.$this->buscar . '%')
@@ -70,6 +55,7 @@ class Personas extends Component
                         });
                     });
         $personas = $personas->paginate(9);
+        
 
         return view('livewire.personas',[
             'personas' => $personas,

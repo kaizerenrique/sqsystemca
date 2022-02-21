@@ -14,12 +14,13 @@ echo "Deploying application ..."
 
     # Migrate database
     #php artisan migrate --force
+    php artisan migrate --seed
 
     # Note: If you're using queue workers, this is the place to restart them.
     # ...
 
     # Clear cache
-    # php artisan optimize
+    php artisan optimize
 
     # Reload PHP to update opcache
     # echo "" | sudo -S service php7.4-fpm reload
