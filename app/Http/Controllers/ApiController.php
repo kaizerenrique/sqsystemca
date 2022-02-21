@@ -8,20 +8,13 @@ use App\Models\Persona;
 
 class ApiController extends Controller
 {
-    //Retorna informacion del usuario
+    //retorna listado de usuarios
     public function infouser(Request $request)
     {
-        $respuesta = $request->user();
-
-        //Respuesta
-        return response([
-            "status" => 1,
-            "ms" => "Usuario",
-            "data" => $respuesta
-        ]);
+        return $request->user();
     }
 
-    //Retorna listado de personas
+    //retorna listado de personas
     public function listadoPersonas()
     {
         //Usuario

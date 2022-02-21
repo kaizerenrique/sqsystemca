@@ -35,6 +35,7 @@ class RoleSeeder extends Seeder
             'email' => 'kayserenrique@gmail.com',
             'password' => bcrypt('123456789')
         ])->assignRole('Administrador');
+<<<<<<< HEAD
 
         //usuario
         User::create([
@@ -48,5 +49,7 @@ class RoleSeeder extends Seeder
             'email' => 'paciente_adn@gmail.com',
             'password' => bcrypt('adn123456')
         ])->assignRole('Laboratorio');
+=======
+>>>>>>> parent of 8545b55... Despliegue prueba 1
     }
 }
