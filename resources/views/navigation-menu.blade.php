@@ -116,25 +116,13 @@
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Perfil') }}
                             </x-jet-dropdown-link>
-<<<<<<< HEAD
-                            @can('persoas')
-=======
 
-                            @can('personas')
-
->>>>>>> parent of 0913fcc... Revert "Despliegue prueba 1"
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                         {{ __('API Tokens') }}
                                     </x-jet-dropdown-link>
                                 @endif
-<<<<<<< HEAD
-                            @endcan
-=======
 
-                            @endcan
-
->>>>>>> parent of 0913fcc... Revert "Despliegue prueba 1"
                             <div class="border-t border-gray-100"></div>
 
                             <!-- Authentication -->
@@ -170,16 +158,11 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
-<<<<<<< HEAD
-            @can('persoas')
-=======
 
-            @can('personas')
->>>>>>> parent of 0913fcc... Revert "Despliegue prueba 1"
                 <x-jet-responsive-nav-link href="{{ route('personas') }}" :active="request()->routeIs('personas')">
                     {{ __('Personas') }}
                 </x-jet-responsive-nav-link>
-            @endcan
+            
         </div>
 
         <!-- Responsive Settings Options -->
@@ -202,22 +185,13 @@
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Perfil') }}
                 </x-jet-responsive-nav-link>
-<<<<<<< HEAD
-                @can('persoas')
-=======
 
-                @can('personas')
->>>>>>> parent of 0913fcc... Revert "Despliegue prueba 1"
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
                         </x-jet-responsive-nav-link>
                     @endif
-                @endcan
-<<<<<<< HEAD
-=======
 
->>>>>>> parent of 0913fcc... Revert "Despliegue prueba 1"
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
