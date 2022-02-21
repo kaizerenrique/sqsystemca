@@ -14,6 +14,7 @@ echo "Deploying application ..."
 
     # Migrate database
     #php artisan migrate --force
+    #php artisan migrate --seed
 
     # Note: If you're using queue workers, this is the place to restart them.
     # ...
