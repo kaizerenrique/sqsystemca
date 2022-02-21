@@ -16,23 +16,20 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>                    
                 </div>
-<<<<<<< HEAD
-                @can('persoas')
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('personas') }}" :active="request()->routeIs('personas')">
                         {{ __('Personas') }}
                     </x-jet-nav-link>                    
                 </div>
-=======
 
-                @can('personas')
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+
+                                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('personas') }}" :active="request()->routeIs('personas')">
                             {{ __('Personas') }}
                         </x-jet-nav-link>                    
                     </div>
->>>>>>> parent of 0913fcc... Revert "Despliegue prueba 1"
-                @endcan
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
