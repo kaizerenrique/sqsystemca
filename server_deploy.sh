@@ -14,10 +14,6 @@ echo "Deploying application ..."
 
     # Migrate database
     #php artisan migrate --force
-<<<<<<< HEAD
-    #php artisan migrate --seed
-=======
->>>>>>> parent of 8545b55... Despliegue prueba 1
 
     # Note: If you're using queue workers, this is the place to restart them.
     # ...
