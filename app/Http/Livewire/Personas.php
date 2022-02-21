@@ -54,12 +54,9 @@ class Personas extends Component
                                 ->orWhere('direccion', 'like', '%'.$this->buscar . '%');
                         });
                     });
-<<<<<<< HEAD
+
         $personas = $personas->paginate(9);
         
-=======
-        $personas = $personas->paginate(10);
->>>>>>> parent of ffccaa9... Modificacion de registros a mostrar en la tabla
 
         return view('livewire.personas',[
             'personas' => $personas,
