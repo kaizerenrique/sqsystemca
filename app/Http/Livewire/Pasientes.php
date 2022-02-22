@@ -40,7 +40,7 @@ class Pasientes extends Component
     {
         //$this->validate();
         
-        $lap = 2;
+        $lap = 5;
             do {
                 $code = Str::random(7);    
             } while (Persona::where('idusuario', $code)->exists());

@@ -42,7 +42,7 @@ class Personas extends Component
     public function render()
     {
         //$personas = Persona::where('user_id', auth()->user()->id)
-        $lab = 2;
+        $lab = 5;
         $personas = Persona::where('lap', $lab)
                     ->when($this->buscar, function($query){
                         return $query->where(function ($query){
