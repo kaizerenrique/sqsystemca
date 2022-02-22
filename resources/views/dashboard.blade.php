@@ -18,12 +18,7 @@
                         <div class="col-span-6 sm:col-span-4">                    
                             <livewire:pasientes/>                  
                         </div>                        
-                    </div>               
-
-                    <h2>Bienvenidos !</h2>
-                    <br>
-                    <p>Esta es la pagina de ingreso del sistema.</p>                  
-
+                    </div> 
                 </div>
             </div>
         </div>
