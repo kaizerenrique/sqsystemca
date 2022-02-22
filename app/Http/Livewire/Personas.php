@@ -44,6 +44,7 @@ class Personas extends Component
         //$personas = Persona::where('user_id', auth()->user()->id)
         $lab = 5;
         $personas = Persona::where('lap', $lab)
+                    ->latest()              
                     ->when($this->buscar, function($query){
                         return $query->where(function ($query){
                             $query->where('nombre', 'like', '%'.$this->buscar . '%')
@@ -56,6 +57,7 @@ class Personas extends Component
                                 ->orWhere('direccion', 'like', '%'.$this->buscar . '%');
                         });
                     });
+                    
 
         $personas = $personas->paginate(9);
         
