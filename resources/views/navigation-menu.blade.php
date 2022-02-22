@@ -17,13 +17,13 @@
                     </x-jet-nav-link>                    
                 </div>
 
-                
+                @can('personas')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('personas') }}" :active="request()->routeIs('personas')">
                         {{ __('Personas') }}
                     </x-jet-nav-link>                    
                 </div>
-                
+                @endcan
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -176,13 +176,13 @@
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Perfil') }}
                 </x-jet-responsive-nav-link>
-
+                @can('personas')
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
                         </x-jet-responsive-nav-link>
                     @endif
-
+                @endcan
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
