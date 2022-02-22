@@ -7,8 +7,7 @@
                     {{ __('Registrar') }}
                 </x-jet-button>
             </div>
-        </div>
-        
+        </div>        
     </div>
     <div class="mt-3">
         <div class="flex justify-between">
@@ -71,7 +70,7 @@
         {{$personas->links()}}
     </div>
     <!-- Delete Persona Confirmation Modal -->
-    <x-jet-dialog-modal wire:model="confirmingPersonaDeletion">
+        <x-jet-dialog-modal wire:model="confirmingPersonaDeletion">
             <x-slot name="title">
                 {{ __('Eliminar Registro ') }}
             </x-slot>
