@@ -9,7 +9,7 @@ use App\Models\User;
 class Persona extends Model
 {
     use HasFactory;
-    protected $fillable =['idusuario','nombre','apellido','nac','cedula',
+    protected $fillable =['idusuario','lap','nombre','apellido','nac','cedula',
     'pasaporte','fnacimiento','nrotelefono','email','direccion','destinovuela','fvuelo','numerodevuelo'];
 
     public function user(){

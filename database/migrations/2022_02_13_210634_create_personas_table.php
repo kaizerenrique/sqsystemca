@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->index();
+            $table->integer('lap')->index();
             $table->string('idusuario',250);//codigo unico de identificacion asignado por el sistema 
             $table->string('nombre',120);
             $table->string('apellido',120);

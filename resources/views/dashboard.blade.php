@@ -13,10 +13,6 @@
                         <div>
                             <img class="h-16 w-16 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                         </div>
-
-                        <div class="mt-8 text-2xl">
-                            Bienvenido/a {{ Auth::user()->name }}
-                        </div>
                         
                         <div class="col-span-6 sm:col-span-4">                    
                             <livewire:pasientes/>                  
